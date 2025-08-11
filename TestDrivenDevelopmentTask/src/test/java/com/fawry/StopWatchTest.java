@@ -19,4 +19,12 @@ public class StopWatchTest {
         int minutes = stopWatch.getMinutes();
         assertThat(minutes).isEqualTo(14); // GREEN
     }
+
+    // negative input should be ignored
+    @Test
+    void shouldIgnoreNegativeMinutes() {
+        stopWatch.record(-5);
+        int minutes = stopWatch.getMinutes();
+        assertThat(minutes).isEqualTo(0); // RED
+    }
 }
