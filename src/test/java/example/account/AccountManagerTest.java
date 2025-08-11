@@ -89,4 +89,19 @@ public class AccountManagerTest {
             assertThat(customer.getBalance()).isEqualTo(-1200);
         }
     }
+
+    @Nested
+    class DepositTests {
+        @Test
+        void givenPositiveDepositAmount_whenDeposit_thenBalanceIncreases() {
+            // Arrange
+            customer.setBalance(500);
+
+            // Act
+            accountManager.deposit(customer, 200);
+
+            // Assert
+            assertThat(customer.getBalance()).isEqualTo(700);
+        }
+    }
 }
