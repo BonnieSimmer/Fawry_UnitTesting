@@ -3,6 +3,7 @@ package com.fawry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,10 +29,22 @@ public class Main {
         Consumer<String> sendWelcomeMail = mail -> System.out.println("Sending welcome mail to: " + mail);
         register("JohnDoe",sendWelcomeMail);
 
+        // Function as a return type
+        Function<Integer, Integer> doubleNumber = multiplyBy(2);
+        Function<Integer, Integer> tripleNumber = multiplyBy(3);
+
+        System.out.println(doubleNumber.apply(4));
+        System.out.println(tripleNumber.apply(4));
+        System.out.println(multiplyBy(5).apply(6));
+
     }
 
     public static void register(String name, Consumer<String> callback) {
         // Simulate some registration logic
         callback.accept(name + "@domain.com");
+    }
+
+    public static Function<Integer, Integer> multiplyBy(int x) {
+        return y -> x * y;
     }
 }
