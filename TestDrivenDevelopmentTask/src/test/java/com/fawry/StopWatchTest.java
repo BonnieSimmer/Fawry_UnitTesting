@@ -61,4 +61,22 @@ public class StopWatchTest {
         assertThat(hours).isEqualTo(3); // GREEN
         assertThat(days).isEqualTo(1); // GREEN
     }
+
+    // days may be increased according to daily working hours
+    @Test
+    void shouldIncreaseDaysAccordingToDailyWorkingHours() {
+        // Arrange
+        stopWatch.setWorkingHours(true);
+
+        // Act
+        stopWatch.record(960); // 16 hours = 960 minutes
+        int minutes = stopWatch.getMinutes();
+        int hours = stopWatch.getHours();
+        int days = stopWatch.getDays();
+
+        // Assert
+        assertThat(minutes).isEqualTo(0); // GREEN
+        assertThat(hours).isEqualTo(0); // RED
+        assertThat(days).isEqualTo(2); // RED
+    }
 }

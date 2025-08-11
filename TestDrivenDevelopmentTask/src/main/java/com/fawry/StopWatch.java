@@ -4,6 +4,7 @@ public class StopWatch {
     private int minutes;
     private int hours;
     private int days;
+    private boolean isWorkingHours;
 
     public void record(int minutes) {
         if (minutes > 0) {
@@ -25,8 +26,10 @@ public class StopWatch {
     public int getHours() {
        return hours;
     }
-
     public int getDays() {
         return days;
+    }
+
+    public void setWorkingHours(boolean state) {
     }
 }
