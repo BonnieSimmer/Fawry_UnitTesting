@@ -57,8 +57,8 @@ public class StopWatchTest {
         int days = stopWatch.getDays();
 
         // Assert
-        assertThat(minutes).isEqualTo(15); // RED
-        assertThat(hours).isEqualTo(3); // RED
-        assertThat(days).isEqualTo(1); // RED
+        assertThat(minutes).isEqualTo(15); // GREEN
+        assertThat(hours).isEqualTo(3); // GREEN
+        assertThat(days).isEqualTo(1); // GREEN
     }
 }
