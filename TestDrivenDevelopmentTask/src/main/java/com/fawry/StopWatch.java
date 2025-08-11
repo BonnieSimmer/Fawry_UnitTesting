@@ -4,7 +4,9 @@ public class StopWatch {
     private int minutes;
 
     public void record(int minutes) {
-        this.minutes += minutes;
+        if (minutes > 0) {
+            this.minutes += minutes;
+        }
     }
 
     public int getMinutes() {

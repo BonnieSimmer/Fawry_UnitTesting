@@ -25,6 +25,6 @@ public class StopWatchTest {
     void shouldIgnoreNegativeMinutes() {
         stopWatch.record(-5);
         int minutes = stopWatch.getMinutes();
-        assertThat(minutes).isEqualTo(0); // RED
+        assertThat(minutes).isEqualTo(0); // GREEN
     }
 }
