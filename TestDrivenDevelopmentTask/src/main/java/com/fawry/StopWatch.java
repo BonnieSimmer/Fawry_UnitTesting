@@ -3,6 +3,7 @@ package com.fawry;
 public class StopWatch {
     private int minutes;
     private int hours;
+    private int days;
 
     public void record(int minutes) {
         if (minutes > 0) {
@@ -21,4 +22,7 @@ public class StopWatch {
        return hours;
     }
 
+    public int getDays() {
+        return 0;
+    }
 }
