@@ -17,6 +17,6 @@ public class StopWatchTest {
     void shouldRecordMinutes() {
         stopWatch.record(14);
         int minutes = stopWatch.getMinutes();
-        assertThat(minutes).isEqualTo(14); // RED
+        assertThat(minutes).isEqualTo(14); // GREEN
     }
 }
