@@ -58,5 +58,20 @@ public class AccountManagerTest {
             assertThat(result).isEqualTo("success");
             assertThat(customer.getBalance()).isEqualTo(-200);
         }
+
+        @Test
+        void givenCustomerWithInsufficientBalanceAndCreditAllowedAndMoreThanMaxCreditAndNotVIP_whenDeposit_thenFail() {
+            // Arrange
+            customer.setBalance(300);
+            customer.setCreditAllowed(true);
+            customer.setVip(false);
+
+            // Act
+            String result = accountManager.withdraw(customer, 1500);
+
+            // Assert
+            assertThat(result).isEqualTo("maximum credit exceeded");
+            assertThat(customer.getBalance()).isEqualTo(300);
+        }
     }
 }
