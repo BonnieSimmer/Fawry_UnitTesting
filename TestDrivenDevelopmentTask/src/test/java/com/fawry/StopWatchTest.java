@@ -27,4 +27,14 @@ public class StopWatchTest {
         int minutes = stopWatch.getMinutes();
         assertThat(minutes).isEqualTo(0); // GREEN
     }
+
+    // if minutes reached 60 it should increase hours
+    @Test
+    void shouldIncreaseHoursWhenMinutesReachSixty() {
+        stopWatch.record(64);
+        int minutes = stopWatch.getMinutes();
+        int hours = stopWatch.getHours();
+        assertThat(minutes).isEqualTo(4); // RED
+        assertThat(hours).isEqualTo(1); // RED
+    }
 }
