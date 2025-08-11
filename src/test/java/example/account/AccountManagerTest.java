@@ -103,5 +103,18 @@ public class AccountManagerTest {
             // Assert
             assertThat(customer.getBalance()).isEqualTo(700);
         }
+        @Test
+        void givenInvalidDepositAmount_whenDeposit_thenBalanceDoesNotChange() {
+            // Arrange
+            customer.setBalance(500);
+
+            // Act
+            accountManager.deposit(customer, -100);
+            accountManager.deposit(customer, 0);
+
+            // Assert
+            assertThat(customer.getBalance()).isEqualTo(500);
+
+        }
     }
 }
