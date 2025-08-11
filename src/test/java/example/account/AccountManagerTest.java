@@ -30,7 +30,19 @@ public class AccountManagerTest {
             assertThat(result).isEqualTo("success");
             assertThat(customer.getBalance()).isEqualTo(500);
         }
+
+        @Test
+        void givenCustomerWithInsufficientBalanceAndNoCreditAllowed_whenWithdraw_thenFail() {
+            // Arrange
+            customer.setBalance(300);
+            customer.setCreditAllowed(false);
+
+            // Act
+            String result = accountManager.withdraw(customer, 500);
+
+            // Assert
+            assertThat(result).isEqualTo("insufficient account balance");
+            assertThat(customer.getBalance()).isEqualTo(300);
+        }
     }
-
-
 }
