@@ -48,4 +48,17 @@ public class StoreTest {
         verifyNoInteractions(accountManager);
     }
 
+    @Test
+    void givenEnoughQuantityAndFailedWithdraw_WhenBuy_ThenThrowException() {
+        // Arrange
+        when(accountManager.withdraw(any(), anyInt())).thenReturn("insufficient account balance");
+        product.setQuantity(4);
+
+        // Act & Assert
+        assertThatThrownBy(() -> store.buy(product, customer))
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("Payment failure: insufficient account balance");
+        verify(accountManager, times(1)).withdraw(customer, product.getPrice());
+    }
+
 }
