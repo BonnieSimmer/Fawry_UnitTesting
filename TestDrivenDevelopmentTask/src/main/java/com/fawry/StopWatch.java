@@ -5,6 +5,7 @@ public class StopWatch {
     private int hours;
     private int days;
     private boolean isWorkingHours;
+    private final int DAILY_WORKING_HOURS = 8;
 
     public void record(int minutes) {
         if (minutes > 0) {
@@ -12,6 +13,12 @@ public class StopWatch {
             if (this.minutes >= 60) {
                 this.hours += this.minutes / 60;
                 this.minutes = this.minutes % 60;
+            }
+            if (isWorkingHours) {
+                if (this.hours >= DAILY_WORKING_HOURS) {
+                    this.days += this.hours / DAILY_WORKING_HOURS;
+                    this.hours = this.hours % DAILY_WORKING_HOURS;
+                }
             }
             if (this.hours >= 24) {
                 this.days += this.hours / 24;
@@ -31,5 +38,6 @@ public class StopWatch {
     }
 
     public void setWorkingHours(boolean state) {
+        this.isWorkingHours = state;
     }
 }

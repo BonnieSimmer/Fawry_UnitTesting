@@ -76,7 +76,7 @@ public class StopWatchTest {
 
         // Assert
         assertThat(minutes).isEqualTo(0); // GREEN
-        assertThat(hours).isEqualTo(0); // RED
-        assertThat(days).isEqualTo(2); // RED
+        assertThat(hours).isEqualTo(0); // GREEN
+        assertThat(days).isEqualTo(2); // GREEN
     }
 }
