@@ -34,7 +34,7 @@ public class StopWatchTest {
         stopWatch.record(64);
         int minutes = stopWatch.getMinutes();
         int hours = stopWatch.getHours();
-        assertThat(minutes).isEqualTo(4); // RED
-        assertThat(hours).isEqualTo(1); // RED
+        assertThat(minutes).isEqualTo(4); // GREEN
+        assertThat(hours).isEqualTo(1); // GREEN
     }
 }

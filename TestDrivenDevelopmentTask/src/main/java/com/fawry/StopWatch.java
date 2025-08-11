@@ -7,6 +7,10 @@ public class StopWatch {
     public void record(int minutes) {
         if (minutes > 0) {
             this.minutes += minutes;
+            if (this.minutes >= 60) {
+                this.hours += this.minutes / 60;
+                this.minutes = this.minutes % 60;
+            }
         }
     }
 
@@ -14,7 +18,7 @@ public class StopWatch {
         return minutes;
     }
     public int getHours() {
-       return 0;
+       return hours;
     }
 
 }
