@@ -36,4 +36,16 @@ public class StoreTest {
         verify(accountManager, times(1)).withdraw(customer, product.getPrice());
     }
 
+    @Test
+    void givenProductOutOfStock_WhenBuy_ThenThrowException() {
+        // Arrange
+        product.setQuantity(0);
+
+        // Act & Assert
+        assertThatThrownBy(() -> store.buy(product, customer))
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("Product out of stock");
+        verifyNoInteractions(accountManager);
+    }
+
 }
