@@ -2,6 +2,7 @@ package com.fawry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,8 +24,14 @@ public class Main {
                         .sum()
         );
 
+        // Functions as arguments
+        Consumer<String> sendWelcomeMail = mail -> System.out.println("Sending welcome mail to: " + mail);
+        register("JohnDoe",sendWelcomeMail);
 
+    }
 
-
+    public static void register(String name, Consumer<String> callback) {
+        // Simulate some registration logic
+        callback.accept(name + "@domain.com");
     }
 }
