@@ -8,22 +8,18 @@ public class StopWatch {
     private final int DAILY_WORKING_HOURS = 8;
 
     public void record(int minutes) {
-        if (minutes > 0) {
-            this.minutes += minutes;
-            if (this.minutes >= 60) {
-                this.hours += this.minutes / 60;
-                this.minutes = this.minutes % 60;
-            }
-            if (isWorkingHours) {
-                if (this.hours >= DAILY_WORKING_HOURS) {
-                    this.days += this.hours / DAILY_WORKING_HOURS;
-                    this.hours = this.hours % DAILY_WORKING_HOURS;
-                }
-            }
-            if (this.hours >= 24) {
-                this.days += this.hours / 24;
-                this.hours = this.hours % 24;
-            }
+        if (minutes <= 0) return;
+
+        this.minutes += minutes;
+        if (this.minutes >= 60) {
+            this.hours += this.minutes / 60;
+            this.minutes %= 60;
+        }
+
+        int hoursPerDay = isWorkingHours ? DAILY_WORKING_HOURS : 24;
+        if (this.hours >= hoursPerDay) {
+            this.days += this.hours / hoursPerDay;
+            this.hours %= hoursPerDay;
         }
     }
 
